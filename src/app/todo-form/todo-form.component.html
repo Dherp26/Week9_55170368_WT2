@@ -1,0 +1,37 @@
+<div *ngIf="error">Data With ID {{ this.id }} is not available</div>
+
+<div [formGroup]="todoForm">
+<form >
+  <h1>TODO LIST</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Data To-Do</mat-label>
+    <input matInput placeholder="Input list to do" name="input" id="input" [(ngModel)]="todo.input" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>DeadLine</mat-label>
+    <input matInput placeholder="Input DeadLine" name="deadline" id="deadline" [(ngModel)]="todo.deadline" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Status (Done/No)</mat-label>
+    <input matInput placeholder="Type status" name="status" id="status" [(ngModel)]="todo.status" />
+  </mat-form-field>
+  <br />
+  <div class="buttons">
+    <div *ngIf="update">
+      <button mat-raised-button color="warn" (click)="deleteTodo()">
+        Delete
+      </button>
+      <button [disabled]="todoForm.invalid" mat-raised-button color="primary" (click)="updateTodo()">
+        Update
+      </button>
+    </div>
+    <div *ngIf="!update">
+      <button  mat-raised-button (click)="postTodo()" color="primary">
+        Post
+      </button>
+    </div>
+  </div>
+</form>
+</div>
